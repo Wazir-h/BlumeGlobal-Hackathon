@@ -2,6 +2,8 @@
 
 The vehicle routing problem is solved using the OR-Tools library by Google. The algorithm considers both distance and capacity constraints.
 The program taken account of all the orders placed in a particular day and assembles all the demand into one demand array, directly from the excel sheet. Also capacities are taken from the vehicle data.
+
+
 -Distance Constraint:
 The algorithm uses a time_callback function to calculate the time required based on the indices and the inverse of speed (labeled as speed in the code). Since the OR-Tools library only accepts integer values, the speed inverse values are normalized. The time_callback method returns distance * speed, where speed is actually the speed inverse.
 
