@@ -1,4 +1,4 @@
-Objective: 6505
+Objective: 2245
 Route for vehicle 0:
 0 --0min--> 0
 Time of the route: 0min
@@ -8,23 +8,23 @@ Route for vehicle 1:
 Time of the route: 0min
 
 Route for vehicle 2:
-0 --0min--> 0
-Time of the route: 0min
+0 --360min--> 3 --30min--> 4 --315min--> 0
+Time of the route: 705min
 
 Route for vehicle 3:
-0 --0min--> 0
-Time of the route: 0min
+0 --255min--> 6 --30min--> 7 --270min--> 0
+Time of the route: 555min
 
 Route for vehicle 4:
-0 --1620min--> 7 --180min--> 4 --180min--> 3 --225min--> 1 --1620min--> 0
-Time of the route: 3825min
+0 --270min--> 1 --39min--> 5 --330min--> 0
+Time of the route: 639min
 
 Route for vehicle 5:
-0 --1040min--> 2 --160min--> 5 --120min--> 6 --1360min--> 0
-Time of the route: 2680min
+0 --173min--> 2 --173min--> 0
+Time of the route: 346min
 
-Maximum of the route time: 3825min
-Objective: 6505
+Maximum of the route time: 705min
+Objective: 13474
 Route for vehicle 0:
  0 Load(0) ->  0 Load(0)
 Distance of the route: 0m
@@ -36,24 +36,24 @@ Distance of the route: 0m
 Load of the route: 0
 
 Route for vehicle 2:
- 0 Load(0) ->  0 Load(0)
-Distance of the route: 0m
-Load of the route: 0
+ 0 Load(0) ->  3 Load(1104) ->  4 Load(2254) ->  0 Load(2254)
+Distance of the route: 4230m
+Load of the route: 2254
 
 Route for vehicle 3:
- 0 Load(0) ->  0 Load(0)
-Distance of the route: 0m
-Load of the route: 0
+ 0 Load(0) ->  6 Load(861) ->  7 Load(1976) ->  0 Load(1976)
+Distance of the route: 3330m
+Load of the route: 1976
 
 Route for vehicle 4:
- 0 Load(0) ->  7 Load(6) ->  4 Load(10) ->  3 Load(12) ->  1 Load(13) ->  0 Load(13)
-Distance of the route: 3825m
-Load of the route: 13
+ 0 Load(0) ->  1 Load(667) ->  5 Load(2356) ->  0 Load(2356)
+Distance of the route: 3834m
+Load of the route: 2356
 
 Route for vehicle 5:
- 0 Load(0) ->  2 Load(1) ->  5 Load(3) ->  6 Load(7) ->  0 Load(7)
-Distance of the route: 2680m
-Load of the route: 7
+ 0 Load(0) ->  2 Load(874) ->  0 Load(874)
+Distance of the route: 2080m
+Load of the route: 874
 
-Total distance of all routes: 6505m
-Total load of all routes: 20
+Total distance of all routes: 13474m
+Total load of all routes: 7460

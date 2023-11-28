@@ -11,7 +11,6 @@ from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
 
 filepath = './data.xlsx'
-data_sieve.update_data(filepath)
 tn = os.stat(filepath).st_mtime
 bfile = open('warehouse_data.dat','rb')
 warehouse_data = pickle.load(bfile)
@@ -27,19 +26,29 @@ bfile.close()
 #EV : speed = 45 // scaled to 45/6
 # time is scaled to t*6
 
+
+demand_data = pd.read_excel('./demand_input.xlsx')
+region = warehouse_data[1][3]
+demand1 = [0 for i in range(8)]
+
+for i,row in demand_data.iterrows():
+    if(row['LOCATION'] in region):
+        demand1[row['LOCATION']-3] += row['VOLUME(CUFT)']
+
+
 def create_data_model():
     """Stores the data for the problem."""
     data = {}
     data["distance_matrix"] = warehouse_data[1][0]
     data["num_vehicles"] = warehouse_data[1][1]+warehouse_data[1][2]
-    data["demands"] = [0, 1, 1, 2, 4, 2, 4, 6]
-    data["vehicle_capacities"] = [15, 15, 15, 15,15,10]
+    data["demands"] = demand1
+    data["vehicle_capacities"] = [2389 for i in range(6)]
     data["depot"] = 0
     return data
 
 def print_solution(manager, routing, solution):
     """Prints solution on console."""
-    print(f'Objective: {solution.ObjectiveValue()}')
+    print(f'Objective: {solution.ObjectiveValue()//6}')
     max_route_time = 0
     for vehicle_id in range(manager.GetNumberOfVehicles()):
         index = routing.Start(vehicle_id)
@@ -50,13 +59,13 @@ def print_solution(manager, routing, solution):
             previous_index = index
             index = solution.Value(routing.NextVar(index))
             time = routing.GetArcCostForVehicle(previous_index, index, vehicle_id)
-            plan_output += f'--{time}min--> '
+            plan_output += f'--{time//6}min--> '
             route_time += routing.GetArcCostForVehicle(previous_index, index, vehicle_id)
         plan_output += f'{manager.IndexToNode(index)}\n'
-        plan_output += f'Time of the route: {route_time}min\n'
+        plan_output += f'Time of the route: {route_time//6}min\n'
         print(plan_output)
         max_route_time = max(route_time, max_route_time)
-    print(f'Maximum of the route time: {max_route_time}min')
+    print(f'Maximum of the route time: {max_route_time//6}min')
 
 def print_solution_load(data, manager, routing, solution):
     """Prints solution on console."""
